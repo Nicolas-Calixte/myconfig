@@ -1,0 +1,32 @@
+	# IMPORT FILES
+source $HOME/.config/zsh/aliases.zsh
+source $HOME/.config/zsh/exports.zsh
+source $HOME/.config/zsh/prompt-zsh.sh
+
+	# End of lines configured by zsh-newuser-install
+	# The following lines were added by compinstall
+zstyle :compinstall filename '~/.config/zsh/.zshrc'
+
+	# End of lines added by compinstall
+
+autoload -U colors && colors
+unsetopt BEEP
+setopt autocd
+
+	# Autocomplete/tab
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+	# change fg color of suggestions and set ls colors
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
+
+	# PLUGINS
+source $HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
